@@ -48,7 +48,8 @@ var CandidateList = React.createClass({
 					<Candidate name={candidate.name.first + " " + candidate.name.last}
 				role={candidate.job.position + " at " + candidate.job.company}
 				desired_roles={candidate.desired_roles}
-				summary={candidate.summary}>
+				summary={candidate.summary}
+				links={candidate.links}>
 					</Candidate>
 			);
 		});
@@ -71,6 +72,7 @@ var Candidate = React.createClass({
 				<CandidateName name={this.props.name} role={this.props.role} />
 				<CandidateRoleList roles={this.props.desired_roles} />
 				<CandidateSummary summary={this.props.summary} />
+				<CandidateLinkList links={this.props.links} />
 				</tr>
 				
 		);
@@ -130,6 +132,34 @@ var CandidateSummary = React.createClass({
 				<span>In their own words</span><br/>
 				{this.props.summary}
 				</td>
+		);
+	}
+});
+
+var CandidateLinkList = React.createClass({
+	render: function() {
+		var links = this.props.links;
+		var linkNodes = Object.keys(links).map(function(key, index, allkeys) {
+			return (
+					<CandidateLink name={key} link={links[key]} />
+			);
+		});
+
+		return (
+				<td className="candidateLinkList">
+				<span>Links</span><br/>
+				{linkNodes}
+				</td>
+		);
+	}
+});
+
+var CandidateLink = React.createClass({
+	render: function() {
+		return (
+				<a href={this.props.link}>
+				{this.props.name}
+			    </a>
 		);
 	}
 });
