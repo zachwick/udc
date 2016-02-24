@@ -144,12 +144,17 @@ var CandidateSummary = React.createClass({
 // This React component that constructs the list of a Candidate's links
 var CandidateLinkList = React.createClass({
 	render: function() {
-		var links = this.props.links;
-		var linkNodes = Object.keys(links).map(function(key, index, allkeys) {
+		// In the data that comes back from the underdog-candidates Candidates API,
+		// a given Candidate's links are a JSON object where this key is the name
+		// of the site ('github', 'linkedin', 'resume', etc.) and the value is the
+		// actual URL. JS Objects don't have a `map` method, so we need to iterate
+		// over the object's keys and grab out the value for that key to pass into
+		// the CandidateLink component.
+		var linkNodes = Object.keys(this.props.links).map(function(key, index, allkeys) {
 			return (
-					<CandidateLink name={key} link={links[key]} />
+					<CandidateLink name={key} link={this.props.links[key]} />
 			);
-		});
+		}, this);
 
 		return (
 				<td className="candidateLinkList">
