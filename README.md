@@ -22,3 +22,12 @@ None
 For development purposes, all JS libraries are loaded from the project
 directory. This is sub-optimal for production deployment where the JS
 libraries should be loaded from a CDN.
+
+
+# What I learned doing this
+
+- I kind of like the JSX markup. JSX:HTML+JS (in Backbone)::LESS:CSS
+    - It feels less magic than Angular, which is a good thing :)
+- You cannot put JS comments inside of a JSX block. This makes sense
+in retrospect
+
