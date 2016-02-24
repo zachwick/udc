@@ -49,7 +49,8 @@ var CandidateList = React.createClass({
 				role={candidate.job.position + " at " + candidate.job.company}
 				desired_roles={candidate.desired_roles}
 				summary={candidate.summary}
-				links={candidate.links}>
+				links={candidate.links}
+				email={candidate.email}>
 					</Candidate>
 			);
 		});
@@ -73,6 +74,7 @@ var Candidate = React.createClass({
 				<CandidateRoleList roles={this.props.desired_roles} />
 				<CandidateSummary summary={this.props.summary} />
 				<CandidateLinkList links={this.props.links} />
+				<CandidateEmail email={this.props.email} />
 				</tr>
 				
 		);
@@ -160,6 +162,18 @@ var CandidateLink = React.createClass({
 				<a href={this.props.link}>
 				{this.props.name}
 			    </a>
+		);
+	}
+});
+
+var CandidateEmail = React.createClass({
+	render: function() {
+		return (
+			<td className="candidateEmail">
+				<a href={"mailto:" + this.props.email}>
+				    {this.props.email}
+			    </a>
+			</td>
 		);
 	}
 });
