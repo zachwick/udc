@@ -26,6 +26,34 @@
 // This React component is the 'root' of our web app.
 // It serves as the container that all other components are composed into.
 var CandidateBox = React.createClass({
+	// Fetch the Candidate data from the API
+	fetchData: function() {
+		$.ajax({
+			url: this.props.url,
+			dataType: 'json',
+			cache: false,
+			success: function(data) {
+				this.setState({data: data});
+			}.bind(this),
+			error: function(xhr, status, err) {
+				console.error(this.props.url, status, err.toString());
+			}.bind(this)
+		});
+	},
+
+	// This method ensures that our `render` function as defined when we have
+	// no data initially upon page load/ReactDOM initiailization
+	getInitialState: function() {
+		return {data: []};
+	},
+
+	// This method is called by React automatically after the component is
+	// rendered for the first time.
+	componentDidMount: function() {
+		this.fetchData();
+		setInterval(this.fetchData, this.props.pollInterval);
+	},
+	
 	render: function() {
 		// This is React's JSX markup, it's a good thing
 		// This is how React does component composing.
@@ -34,7 +62,7 @@ var CandidateBox = React.createClass({
 		// isn't defined until later on in this JS file.
 		return (
 				<div className="candidateBox">
-				<CandidateList data={this.props.data} />
+				<CandidateList data={this.state.data} />
 			    </div>
 		);
 	}
@@ -43,17 +71,19 @@ var CandidateBox = React.createClass({
 // This React component is the list of all Candidates
 var CandidateList = React.createClass({
 	render: function() {
-		var candidateNodes = this.props.data[0].candidates.map(function(candidate) {
-			return (
-					<Candidate name={candidate.name.first + " " + candidate.name.last}
-				role={candidate.job.position + " at " + candidate.job.company}
-				desired_roles={candidate.desired_roles}
-				summary={candidate.summary}
-				links={candidate.links}
-				email={candidate.email}>
-					</Candidate>
-			);
-		});
+		if (this.props.data.candidates) {
+			var candidateNodes = this.props.data.candidates.map(function(candidate) {
+				return (
+						<Candidate name={candidate.name.first + " " + candidate.name.last}
+					role={candidate.job.position + " at " + candidate.job.company}
+					desired_roles={candidate.desired_roles}
+					summary={candidate.summary}
+					links={candidate.links}
+					email={candidate.email}>
+						</Candidate>
+				);
+			});
+		}
 		return (
 				<table className="candidateList">
 				<tbody>
@@ -263,6 +293,6 @@ var data = [
 // JSX into the DOM element given by the second argument; in our case the
 // element with an id of `content`.
 ReactDOM.render(
-		<CandidateBox data={data} />,
+		<CandidateBox url="http://underdog-candidates.herokuapp.com/candidates" pollInterval={2000} />,
 	document.getElementById('content')
 );
