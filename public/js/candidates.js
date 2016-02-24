@@ -117,6 +117,8 @@ var CandidateRoleList = React.createClass({
 	}
 });
 
+// This React component deals with creating a single role in the list of
+// a given Candidate's roles.
 var CandidateRole = React.createClass({
 	render: function() {
 		return (
@@ -127,6 +129,7 @@ var CandidateRole = React.createClass({
 	}
 });
 
+// This React component deals with the Candidate's summary
 var CandidateSummary = React.createClass({
 	render: function() {
 		return (
@@ -138,6 +141,7 @@ var CandidateSummary = React.createClass({
 	}
 });
 
+// This React component that constructs the list of a Candidate's links
 var CandidateLinkList = React.createClass({
 	render: function() {
 		var links = this.props.links;
@@ -156,6 +160,8 @@ var CandidateLinkList = React.createClass({
 	}
 });
 
+// This is the React component that creates a single link in the list of
+// a given Candidate's links
 var CandidateLink = React.createClass({
 	render: function() {
 		return (
@@ -166,6 +172,7 @@ var CandidateLink = React.createClass({
 	}
 });
 
+// This is the React component that manages displaying a given Candidates email
 var CandidateEmail = React.createClass({
 	render: function() {
 		return (
