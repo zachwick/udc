@@ -43,18 +43,19 @@ var CandidateBox = React.createClass({
 // This React component is the list of all Candidates
 var CandidateList = React.createClass({
 	render: function() {
-		console.log(this.props.data[0].candidates);
 		var candidateNodes = this.props.data[0].candidates.map(function(candidate) {
-			console.log(candidate);
 			return (
 					<Candidate name={candidate.name.first + " " + candidate.name.last}
-				role={candidate.job.position + " at " + candidate.job.company}>
+				role={candidate.job.position + " at " + candidate.job.company}
+				desired_roles={candidate.desired_roles}>
 					</Candidate>
 			);
 		});
 		return (
 				<table className="candidateList">
-				    {candidateNodes}
+				<tbody>
+				{candidateNodes}
+			    </tbody>
 			    </table>
 		);
 	}
@@ -66,7 +67,8 @@ var Candidate = React.createClass({
 	render: function() {
 		return (
 				<tr className="candidate">
-				<CandidateName name={this.props.name} role={this.props.role}/>
+				<CandidateName name={this.props.name} role={this.props.role} />
+				<CandidateRoleList roles={this.props.desired_roles} />
 				</tr>
 				
 		);
@@ -91,6 +93,32 @@ var CandidateName = React.createClass({
 	}
 });
 
+// This is the React component that refers to the Candidate's desired roles
+var CandidateRoleList = React.createClass({
+	render: function() {
+		var roleNodes = this.props.roles.map(function(role) {
+			return (
+					<CandidateRole role={role} />
+			);
+		});
+		
+		return (
+				<td className="candidateRoleList">
+				{roleNodes}
+			    </td>
+		);
+	}
+});
+
+var CandidateRole = React.createClass({
+	render: function() {
+		return (
+				<div className="candidateRole">
+				{this.props.role}
+			    </div>
+		);
+	}
+});
 
 var data = [
 {
