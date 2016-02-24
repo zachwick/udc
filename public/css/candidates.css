@@ -1,0 +1,52 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+}
+
+.content {
+	height: 100%;
+	width: 100%;
+}
+
+.candidateBox {
+	height: 100%;
+	width: 100%;
+	y-overflow: scroll;
+}
+
+.candidateList {
+	width: 100%;
+}
+
+.candidate {
+	width: 100%;
+}
+
+tr {
+	margin: none;
+	padding: none;
+}
+
+.candidateName {
+	width: 20%;
+}
+
+.candidateRoleList {
+	width: 15%;
+}
+
+.candidateSummary {
+	width: 35%;
+}
+
+.candidateLinkList {
+	width: 15%;
+}
+
+.candidateEmail {
+	width: 25%;
+}
