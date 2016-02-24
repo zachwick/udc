@@ -1,0 +1,16 @@
+{
+	"name": "udc",
+	"title": "Underdog.io Candidates Web App",
+	"version": "0.0.1",
+	"private": true,
+	"dependencies": {
+		"docco": ">=0.4.0",
+		"grunt": ">=0.4.0",
+		"grunt-docco": ">=0.1.2",
+		"grunt-contrib-concat": ">=0.0.1"
+	},
+	"licenses": {
+		"type": "AGPLv3",
+		"url": "http://opensource.org/licenses/AGPL"
+	}
+}

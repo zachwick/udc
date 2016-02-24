@@ -14,7 +14,36 @@ The data for this web app is fetched from:
 
 ## Build Requirements
 
-None
+Building the web app requires the following to be installed:
+
+- nodejs
+- npm
+
+1. Clone the git repo
+
+    git clone git@github.com:zachwick/udc.git udc
+
+2. Install the `grunt-cli` npm package globally
+
+    sudo npm install -g grunt-cli
+
+3. `cd` into the udc directory and install the required npm packages
+
+    cd udc
+    npm install
+
+4. Make any desired changes to the code base
+
+5. Test your code by loading `udc/public/index.html` in your brower of choice
+
+6. Generate the docco documentation by executing the following inside
+of the udc directory
+
+    grunt docs
+
+7. You can view the docco generated documentation by opening
+   `udc/docs` in your web browser of choice.
+
 
 ## Testing Requirements
 
