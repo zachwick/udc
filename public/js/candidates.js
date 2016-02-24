@@ -87,13 +87,12 @@ var CandidateName = React.createClass({
 	render: function() {
 		return (
 				<td className="candidateName">
-				<h2 className="candidateName">
+				<h2 className="candidateNameName">
 				{this.props.name}
 			    </h2>
-				<br/>
-				<h5 className="candidateRole">
+				<p className="candidateNameRole">
 				{this.props.role}
-			    </h5>
+			    </p>
 				</td>
 		);
 	}
@@ -111,7 +110,7 @@ var CandidateRoleList = React.createClass({
 		return (
 				<td className="candidateRoleList">
 				<span>Desired Roles</span><br/>
-				{roleNodes}
+				<p>{roleNodes}</p>
 			    </td>
 		);
 	}
@@ -135,7 +134,7 @@ var CandidateSummary = React.createClass({
 		return (
 				<td className="candidateSummary">
 				<span>In their own words</span><br/>
-				{this.props.summary}
+				<p>{this.props.summary}</p>
 				</td>
 		);
 	}
@@ -159,7 +158,7 @@ var CandidateLinkList = React.createClass({
 		return (
 				<td className="candidateLinkList">
 				<span>Links</span><br/>
-				{linkNodes}
+				<p>{linkNodes}</p>
 				</td>
 		);
 	}
@@ -183,7 +182,7 @@ var CandidateEmail = React.createClass({
 		return (
 			<td className="candidateEmail">
 				<a href={"mailto:" + this.props.email}>
-				    {this.props.email}
+				    Email
 			    </a>
 			</td>
 		);
