@@ -21,25 +21,25 @@ Building the web app requires the following to be installed:
 
 1. Clone the git repo
 
-    git clone git@github.com:zachwick/udc.git udc
+`git clone git@github.com:zachwick/udc.git udc`
 
 2. Install the `grunt-cli` npm package globally
 
-    sudo npm install -g grunt-cli
-
+`sudo npm install -g grunt-cli`
+	
 3. `cd` into the udc directory and install the required npm packages
-
-    cd udc
-    npm install
+   
+`cd udc
+npm install`
 
 4. Make any desired changes to the code base
 
-5. Test your code by loading `udc/public/index.html` in your brower of choice
+5. Test your code by loading `udc/public/index.html` in your browser of choice
 
 6. Generate the docco documentation by executing the following inside
 of the udc directory
 
-    grunt docs
+`grunt docs`
 
 7. You can view the docco generated documentation by opening
    `udc/docs` in your web browser of choice.
