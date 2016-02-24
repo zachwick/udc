@@ -47,7 +47,8 @@ var CandidateList = React.createClass({
 			return (
 					<Candidate name={candidate.name.first + " " + candidate.name.last}
 				role={candidate.job.position + " at " + candidate.job.company}
-				desired_roles={candidate.desired_roles}>
+				desired_roles={candidate.desired_roles}
+				summary={candidate.summary}>
 					</Candidate>
 			);
 		});
@@ -69,6 +70,7 @@ var Candidate = React.createClass({
 				<tr className="candidate">
 				<CandidateName name={this.props.name} role={this.props.role} />
 				<CandidateRoleList roles={this.props.desired_roles} />
+				<CandidateSummary summary={this.props.summary} />
 				</tr>
 				
 		);
@@ -104,6 +106,7 @@ var CandidateRoleList = React.createClass({
 		
 		return (
 				<td className="candidateRoleList">
+				<span>Desired Roles</span><br/>
 				{roleNodes}
 			    </td>
 		);
@@ -116,6 +119,17 @@ var CandidateRole = React.createClass({
 				<div className="candidateRole">
 				{this.props.role}
 			    </div>
+		);
+	}
+});
+
+var CandidateSummary = React.createClass({
+	render: function() {
+		return (
+				<td className="candidateSummary">
+				<span>In their own words</span><br/>
+				{this.props.summary}
+				</td>
 		);
 	}
 });
